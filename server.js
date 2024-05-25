@@ -231,7 +231,6 @@ app.post('/submit-participated-events', upload.array('eventImage', 5), async (re
 
 
 
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
