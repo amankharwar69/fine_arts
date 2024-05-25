@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN PAGE</title>
+    <link rel="stylesheet" href="styles/update.css">
+</head>
+<body>
+
+
+
+     <!--NAVIGATION PART-->
+     <div class="navigation">
+        <nav>
+            <div class="logo">
+                    <img src="resources/logo finearts.png" alt="">
+                    <h1>KALABDHI</h1>
+                </h1>
+            </div>
+            <div class="nav">
+                <form action="/loginpage" method="post">
+                    <button name="button" value="admin">ADMIN PAGE</button>
+                    <button name="button" value="view">VIEW</button>
+                    <button name="button" value="logout">LOGOUT</button> 
+                </form>
+            </div>
+        </nav>
+        </div>
+        <!-- nav bar end -->
+    <!--------------------------------------------------------------------------------------->
+
+
+
+
+
+
+<h1 style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> UPLOAD EVENTS</h1>
+
+
+
+<div class="events"> 
+    <!-- <h1 name="upevents">UPCOMING EVENTS</h1> -->
+    <form action="upload_event" method="post" enctype="multipart/form-data">
+        <label for="event_brochure">Event Brochure:</label>
+        <input type="file" id="event_brochure" name="event_brochure" accept=".pdf, .doc, .docx">
+        <br><br>
+        <label for="event_date">Event Date:</label>
+        <input type="date" id="event_date" name="event_date">
+        <br><br>
+        <label>Event place/college:</label>
+        <input type="text" id="event_place" name="event_place">
+        <br><br>
+        <label for="event_name">Event Name:</label>
+        <input type="text" id="event_name" name="event_name">
+        <br><br>
+        <input type="submit" value="Upload Event">
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+<h1 style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 2%;"> UPLOAD GALLERY</h1>
+
+<div class="container">
+    <h1>Participated Events Details</h1>
+    <form action="/submit-participated-events" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName" required>
+        </div>
+        <div class="form-group">
+            <label for="eventPrize">Event Prize :</label>
+            <select id="eventPrize" name="eventPrize" required>
+                <option value="1st">1st</option>
+                <option value="2nd">2nd</option>
+                <option value="3rd">3rd</option>
+                <option value="no">no prize</option>
+            </select>
+        <div class="form-group">
+            <label for="eventPlace">Event Place:</label>
+            <input type="text" id="eventPlace" name="eventPlace" required>
+        </div>
+        <div class="form-group">
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+        </div>
+        <div class="form-group">
+            <label for="students">Participating Students (Name and Reg No):</label>
+            <div id="students">
+                <div class="student">
+                    <input type="text" name="studentName[]" placeholder="Student Name" required>
+                    <input type="text" name="studentRegNo[]" placeholder="Registration No" required>
+                </div>
+            </div>
+            <button type="button" id="addStudent">Add Another Student</button>
+        </div>
+        <div class="form-group">
+            <label for="eventImage">Upload Images:</label>
+            <input type="file" id="eventImage" name="eventImage[]" accept="image/*" multiple required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+
+<script>
+    document.getElementById('addStudent').addEventListener('click', function() {
+        var newStudent = document.createElement('div');
+        newStudent.classList.add('student');
+        newStudent.innerHTML = '<input type="text" name="studentName[]" placeholder="Student Name" required> <input type="text" name="studentRegNo[]" placeholder="Registration No" required>';
+        document.getElementById('students').appendChild(newStudent);
+    });
+</script>
+
+
+
+
+</body>
+</html>

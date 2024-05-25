@@ -1,0 +1,58 @@
+<!-- adminhome.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #453f3f;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #807979;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+        button{
+            display:block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #141515;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: larger;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ADMIN LOGIN SUCCESSFULL</h1>
+        <h1>Start your admin page </h1>
+        <form action="/loginpage" method="post">
+            <button name="button" value="continue">OPEN ADMIN</button>
+            <button name="button" value="logout">LOGOUT</button> 
+        </form>
+    </div>
+</body>
+</html>
