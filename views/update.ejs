@@ -34,6 +34,7 @@
 
 
 
+<!--  --------------------------------------upcomming events uploading-------------------------------------------------------------------------------------- -->
 
 <h1 style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> UPLOAD EVENTS</h1>
 
@@ -58,16 +59,18 @@
     </form>
 </div>
 
+<!-- end part of the events uploading -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 
 
 
 
 
 
+<!-- ------------------------------------------------------------UPLOADING DETAILS PART--------------------------------------------- -------------------------->
 
+<h1 style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 2%;"> UPLOAD DETAILS</h1>
 
-
-<h1 style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 2%;"> UPLOAD GALLERY</h1>
 
 <div class="container">
     <h1>Participated Events Details</h1>
@@ -77,6 +80,10 @@
             <input type="text" id="eventName" name="eventName" required>
         </div>
         <div class="form-group">
+            <label for="participatedIn">Participated In:</label>
+            <input type="text" id="participatedIn" name="participatedIn" required>
+        </div>
+        <div class="form-group">
             <label for="eventPrize">Event Prize :</label>
             <select id="eventPrize" name="eventPrize" required>
                 <option value="1st">1st</option>
@@ -84,6 +91,7 @@
                 <option value="3rd">3rd</option>
                 <option value="no">no prize</option>
             </select>
+        </div>
         <div class="form-group">
             <label for="eventPlace">Event Place:</label>
             <input type="text" id="eventPlace" name="eventPlace" required>
@@ -93,11 +101,18 @@
             <input type="date" id="eventDate" name="eventDate" required>
         </div>
         <div class="form-group">
-            <label for="students">Participating Students (Name and Reg No):</label>
+            <label for="students">Participating Students (Name, Reg No, and Class):</label>
             <div id="students">
                 <div class="student">
                     <input type="text" name="studentName[]" placeholder="Student Name" required>
                     <input type="text" name="studentRegNo[]" placeholder="Registration No" required>
+                    <select name="studentClass[]" required>
+                        <option value="BBA">BBA</option>
+                        <option value="BCOM">BCOM</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BSC">BSC</option>
+                        <option value="BA">BA</option>
+                    </select>
                 </div>
             </div>
             <button type="button" id="addStudent">Add Another Student</button>
@@ -110,16 +125,26 @@
     </form>
 </div>
 
-
-
 <script>
     document.getElementById('addStudent').addEventListener('click', function() {
         var newStudent = document.createElement('div');
         newStudent.classList.add('student');
-        newStudent.innerHTML = '<input type="text" name="studentName[]" placeholder="Student Name" required> <input type="text" name="studentRegNo[]" placeholder="Registration No" required>';
+        newStudent.innerHTML = `
+            <input type="text" name="studentName[]" placeholder="Student Name" required>
+            <input type="text" name="studentRegNo[]" placeholder="Registration No" required>
+            <select name="studentClass[]" required>
+                <option value="BBA">BBA</option>
+                <option value="BCOM">BCOM</option>
+                <option value="BCA">BCA</option>
+                <option value="BSC">BSC</option>
+                <option value="BA">BA</option>
+            </select>`;
         document.getElementById('students').appendChild(newStudent);
     });
 </script>
+
+
+
 
 
 
