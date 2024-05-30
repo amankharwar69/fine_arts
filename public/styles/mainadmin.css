@@ -73,3 +73,60 @@ nav{
 /* nav bar ends */
 /* ---------------------------------------------------------------------------------------- */
 
+
+/* image part start */
+img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    filter: brightness(70%);
+    height: auto;
+}
+
+.image h1 {
+    position: absolute;
+    top: 1%;
+    left: 15%;
+    color: #ffffff;
+    padding: 4em;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 70px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 10px;
+    /* filter: brightness(70%); */
+
+}
+
+
+/* image part end */
+
+/* Footer styles */
+footer {
+    background-color: #171515;
+    padding: 20px;
+    text-align: center;
+    margin-top: -19px;
+}
+
+.footer-info {
+    font-size: 20px;
+    color: #686565;
+}
+
+.footer-info a {
+    color: #cfa5a5;
+    text-decoration: underline;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+    margin-top: -4.5em;
+
+}
+
+/* footer end */

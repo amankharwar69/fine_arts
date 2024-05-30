@@ -147,6 +147,9 @@ app.post('/login', async (req, res) => {
 });
 
 
+
+
+
 // Multer configuration for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -162,7 +165,12 @@ const storage = multer.diskStorage({
     }
 });
 
+
+
+
 const upload = multer({ storage });
+
+
 
 // Route to handle form submission
 app.post('/upload_event', upload.single('event_brochure'), async (req, res) => {
