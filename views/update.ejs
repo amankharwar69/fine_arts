@@ -74,7 +74,7 @@
 
 <div class="container">
     <h1>Participated Events Details</h1>
-    <form action="/submit-participated-events" method="post" enctype="multipart/form-data">
+    <form action="/submitevents" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="eventName">Event Name:</label>
             <input type="text" id="eventName" name="eventName" required>
@@ -119,10 +119,11 @@
         </div>
         <div class="form-group">
             <label for="eventImage">Upload Images:</label>
-            <input type="file" id="eventImage" name="eventImage[]" accept="image/*" multiple required>
+            <input type="file" id="eventImage" name="eventImage[]" accept="image/*" multiple>
         </div>
         <button type="submit">Submit</button>
     </form>
+    
 </div>
 
 <script>

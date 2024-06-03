@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    img {
+        max-width: 100px;
+        height: auto;
+        display: block;
+    }
+
+    button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #d32f2f;
+    }
+
+    form {
+        display: inline-block;
+    }
+</style>
+
+
+<body>
+
+    <h1>Upcoming Events</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Event Brochure</th>
+                <th>Event Date</th>
+                <th>Event Place</th>
+                <th>Event Name</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% upevents.forEach(event=> { %>
+                <tr>
+                    <td><a href="<%= event.event_brochure %>" target="_blank">
+                            <%= event.event_brochure %>
+                        </a></td>
+                    <td>
+                        <%= event.event_date.toDateString() %>
+                    </td>
+                    <td>
+                        <%= event.event_place %>
+                    </td>
+                    <td>
+                        <%= event.event_name %>
+                    </td>
+                    <td>
+                        <%= event.createdAt.toDateString() %>
+                    </td>
+                    <td>
+                        <%= event.updatedAt.toDateString() %>
+                    </td>
+                    <td>
+                        <form action="/delete-event/<%= event._id %>" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+
+
+
+
+    <h1>Student Participated Events</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Participated In</th>
+                <th>Event Prize</th>
+                <th>Event Place</th>
+                <th>Event Date</th>
+                <th>Students</th>
+                <th>Event Images</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% events.forEach(event=> { %>
+                <tr>
+                    <td>
+                        <%= event.eventName %>
+                    </td>
+                    <td>
+                        <%= event.participatedIn %>
+                    </td>
+                    <td>
+                        <%= event.eventPrize %>
+                    </td>
+                    <td>
+                        <%= event.eventPlace %>
+                    </td>
+                    <td>
+                        <%= event.eventDate.toDateString() %>
+                    </td>
+                    <td>
+                        <ul>
+                            <% event.students.forEach(student=> { %>
+                                <li>
+                                    <%= student.name %> (<%= student.regNo %>, <%= student.studentClass %>)
+                                </li>
+                                <% }) %>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <% event.eventImages.forEach(image=> { %>
+                                <li><img src="<%= image %>" alt="Event Image"></li>
+                                <% }) %>
+                        </ul>
+                    </td>
+                    <td>
+                        <form action="/delete-upevent/<%= event._id %>" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>
