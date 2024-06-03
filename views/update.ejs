@@ -1,136 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN PAGE</title>
     <link rel="stylesheet" href="styles/update.css">
 </head>
+
 <body>
 
 
 
-     <!--NAVIGATION PART-->
-     <div class="navigation">
+    <!--NAVIGATION PART-->
+    <div class="navigation">
         <nav>
             <div class="logo">
-                    <img src="resources/logo finearts.png" alt="">
-                    <h1>KALABDHI</h1>
+                <img src="resources/logo finearts.png" alt="">
+                <h1>KALABDHI</h1>
                 </h1>
             </div>
             <div class="nav">
                 <form action="/loginpage" method="post">
                     <button name="button" value="admin">ADMIN PAGE</button>
                     <button name="button" value="view">VIEW</button>
-                    <button name="button" value="logout">LOGOUT</button> 
+                    <button name="button" value="logout">LOGOUT</button>
                 </form>
             </div>
         </nav>
-        </div>
-        <!-- nav bar end -->
+    </div>
+    <!-- nav bar end -->
     <!--------------------------------------------------------------------------------------->
 
 
 
 
 
-<!--  --------------------------------------upcomming events uploading-------------------------------------------------------------------------------------- -->
+    <!--  --------------------------------------upcomming events uploading-------------------------------------------------------------------------------------- -->
 
-<h1 style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> UPLOAD EVENTS</h1>
-
-
-
-<div class="events"> 
-    <!-- <h1 name="upevents">UPCOMING EVENTS</h1> -->
-    <form action="upload_event" method="post" enctype="multipart/form-data">
-        <label for="event_brochure">Event Brochure:</label>
-        <input type="file" id="event_brochure" name="event_brochure" accept=".pdf, .doc, .docx">
-        <br><br>
-        <label for="event_date">Event Date:</label>
-        <input type="date" id="event_date" name="event_date">
-        <br><br>
-        <label>Event place/college:</label>
-        <input type="text" id="event_place" name="event_place">
-        <br><br>
-        <label for="event_name">Event Name:</label>
-        <input type="text" id="event_name" name="event_name">
-        <br><br>
-        <input type="submit" value="Upload Event">
-    </form>
-</div>
-
-<!-- end part of the events uploading -->
-<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+    <h1 style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        UPLOAD EVENTS</h1>
 
 
 
+    <div class="events">
+        <!-- <h1 name="upevents">UPCOMING EVENTS</h1> -->
+        <form action="upload_event" method="post" enctype="multipart/form-data">
+            <label for="event_brochure">Event Brochure:</label>
+            <input type="file" id="event_brochure" name="event_brochure" accept=".pdf, .doc, .docx">
+            <br><br>
+            <label for="event_date">Event Date:</label>
+            <input type="date" id="event_date" name="event_date">
+            <br><br>
+            <label>Event place/college:</label>
+            <input type="text" id="event_place" name="event_place">
+            <br><br>
+            <label for="event_name">Event Name:</label>
+            <input type="text" id="event_name" name="event_name">
+            <br><br>
+            <input type="submit" value="Upload Event">
+        </form>
+    </div>
+
+    <!-- end part of the events uploading -->
+    <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 
 
 
-<!-- ------------------------------------------------------------UPLOADING DETAILS PART--------------------------------------------- -------------------------->
-
-<h1 style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 2%;"> UPLOAD DETAILS</h1>
 
 
-<div class="container">
-    <h1>Participated Events Details</h1>
-    <form action="/submitevents" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="eventName">Event Name:</label>
-            <input type="text" id="eventName" name="eventName" required>
-        </div>
-        <div class="form-group">
-            <label for="participatedIn">Participated In:</label>
-            <input type="text" id="participatedIn" name="participatedIn" required>
-        </div>
-        <div class="form-group">
-            <label for="eventPrize">Event Prize :</label>
-            <select id="eventPrize" name="eventPrize" required>
-                <option value="1st">1st</option>
-                <option value="2nd">2nd</option>
-                <option value="3rd">3rd</option>
-                <option value="no">no prize</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="eventPlace">Event Place:</label>
-            <input type="text" id="eventPlace" name="eventPlace" required>
-        </div>
-        <div class="form-group">
-            <label for="eventDate">Event Date:</label>
-            <input type="date" id="eventDate" name="eventDate" required>
-        </div>
-        <div class="form-group">
-            <label for="students">Participating Students (Name, Reg No, and Class):</label>
-            <div id="students">
-                <div class="student">
-                    <input type="text" name="studentName[]" placeholder="Student Name" required>
-                    <input type="text" name="studentRegNo[]" placeholder="Registration No" required>
-                    <select name="studentClass[]" required>
-                        <option value="BBA">BBA</option>
-                        <option value="BCOM">BCOM</option>
-                        <option value="BCA">BCA</option>
-                        <option value="BSC">BSC</option>
-                        <option value="BA">BA</option>
-                    </select>
-                </div>
+
+    <!-- ------------------------------------------------------------UPLOADING DETAILS PART--------------------------------------------- -------------------------->
+
+    <h1
+        style="font-size: 5em; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 2%;">
+        UPLOAD DETAILS</h1>
+
+
+    <div class="container">
+        <h1>Participated Events Details</h1>
+        <form action="/submitevents" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="eventName">Event Name:</label>
+                <input type="text" id="eventName" name="eventName" required>
             </div>
-            <button type="button" id="addStudent">Add Another Student</button>
-        </div>
-        <div class="form-group">
-            <label for="eventImage">Upload Images:</label>
-            <input type="file" id="eventImage" name="eventImage[]" accept="image/*" multiple>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
-    
-</div>
+            <div class="form-group">
+                <label for="participatedIn">Participated In:</label>
+                <input type="text" id="participatedIn" name="participatedIn" required>
+            </div>
+            <div class="form-group">
+                <label for="eventPrize">Event Prize :</label>
+                <select id="eventPrize" name="eventPrize" required>
+                    <option value="1st">1st</option>
+                    <option value="2nd">2nd</option>
+                    <option value="3rd">3rd</option>
+                    <option value="no">no prize</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eventPlace">Event Place:</label>
+                <input type="text" id="eventPlace" name="eventPlace" required>
+            </div>
+            <div class="form-group">
+                <label for="eventDate">Event Date:</label>
+                <input type="date" id="eventDate" name="eventDate" required>
+            </div>
+            <div class="form-group">
+                <label for="students">Participating Students (Name, Reg No, and Class):</label>
+                <div id="students">
+                    <div class="student">
+                        <input type="text" name="studentName[]" placeholder="Student Name" required>
+                        <input type="text" name="studentRegNo[]" placeholder="Registration No" required>
+                        <select name="studentClass[]" required>
+                            <option value="BBA">BBA</option>
+                            <option value="BCOM">BCOM</option>
+                            <option value="BCA">BCA</option>
+                            <option value="BSC">BSC</option>
+                            <option value="BA">BA</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" id="addStudent">Add Another Student</button>
+            </div>
+            <div class="form-group">
+                <label for="eventImage">Upload Images:</label>
+                <input type="file" id="eventImage" name="eventImage[]" accept="image/*" multiple>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
 
-<script>
-    document.getElementById('addStudent').addEventListener('click', function() {
-        var newStudent = document.createElement('div');
-        newStudent.classList.add('student');
-        newStudent.innerHTML = `
+    </div>
+
+    <style>
+        .bills {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 4em auto;
+        }
+
+        .bills h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .bills label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+
+
+    <div class="bills">
+        <h2>Upload Bill</h2>
+        <form action="/billupload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="event-name">Event Name:</label>
+                <input type="text" id="event-name" name="eventName" required>
+            </div>
+            <div class="form-group">
+                <label for="event-date">Date:</label>
+                <input type="date" id="event-date" name="eventDate" required>
+            </div>
+            <div class="form-group">
+                <label for="bill-image">Bill Image:</label>
+                <input type="file" id="bill-image" name="billImage" accept="image/*" >
+            </div>
+         <button type="submit">upload</button>
+        </form>
+
+    </div>
+
+    <script>
+        document.getElementById('addStudent').addEventListener('click', function () {
+            var newStudent = document.createElement('div');
+            newStudent.classList.add('student');
+            newStudent.innerHTML = `
             <input type="text" name="studentName[]" placeholder="Student Name" required>
             <input type="text" name="studentRegNo[]" placeholder="Registration No" required>
             <select name="studentClass[]" required>
@@ -140,9 +218,9 @@
                 <option value="BSC">BSC</option>
                 <option value="BA">BA</option>
             </select>`;
-        document.getElementById('students').appendChild(newStudent);
-    });
-</script>
+            document.getElementById('students').appendChild(newStudent);
+        });
+    </script>
 
 
 
@@ -151,4 +229,5 @@
 
 
 </body>
+
 </html>

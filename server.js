@@ -7,6 +7,7 @@ import fs from 'fs';
 import Login from './models/admin.js';
 import Event from './models/event.js';
 import Stud from './models/stud.js';
+import Bill from './models/bills.js';
 
 const app = express();
 const port = 3000;
@@ -21,8 +22,9 @@ mongoose.connect("mongodb+srv://amankharwar699:umOO1z0gDki7pcnq@cluster0.wydnqur
     });
 
 // Body parsing middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.json());
 
 // Setting EJS as the template engine
 app.set('view engine', 'ejs');
@@ -47,12 +49,13 @@ app.post('/loginpage', async (req, res) => {
         case 'events':
             try {
                 const event_data = await Event.find();
+                const events = await Stud.find();
                 function formatDate(dateString) {
                     const date = new Date(dateString);
                     const options = { weekday: 'short', month: 'short', day: 'numeric' };
                     return date.toLocaleDateString('en-US', options);
                 }
-                res.render('events', { event_data, formatDate });
+                res.render('events', { event_data, formatDate, events });
             } catch (error) {
                 console.error('Error fetching events:', error);
                 res.render('events', { event_data: [], formatDate });
@@ -243,6 +246,33 @@ app.post("/submitevents", upload.array('eventImage', 10), async (req, res) => {
         res.status(500).send('Error submitting event: ' + error.message);
     }
 });
+app.post('/billupload', async (req, res) => {
+    try {
+        // Extract data from the request body
+        const { eventName, eventDate } = req.body;
+        const billImage = req.file; // Extracting the file from the request
+
+        console.log(eventName, eventDate, billImage);
+
+        // Create a new bill document
+        const bill = new Bill({
+            eventName: eventName,
+            eventDate: eventDate,
+            // billImage: billImage.path // Assuming you are storing the file path
+        });
+
+        // Save the bill to the database
+        await bill.save();
+
+        // Respond with success message
+        res.status(201).json({ message: 'Bill details saved successfully' });
+    } catch (error) {
+        // Handle errors
+        console.error('Error saving bill details:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

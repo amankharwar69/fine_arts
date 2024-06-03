@@ -7,6 +7,68 @@
     <link rel="stylesheet" href="styles/events.css">
     <title>FINE ARTS GDC</title>
 </head>
+<style>
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    table {
+        width: 90%;
+        border-collapse: collapse;
+        margin-top: 20px 0;
+        margin: auto;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        color: rgb(0, 0, 0);
+        background-color: white;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    img {
+        max-width: 100px;
+        height: auto;
+        display: block;
+    }
+
+    button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #d32f2f;
+    }
+
+    form {
+        display: inline-block;
+    }
+</style>
 
 <body>
     <!--NAVIGATION PART-->
@@ -27,9 +89,9 @@
             </div>
         </nav>
     </div>
-  
+
     <div class="events" style="color: white;text-align: center; padding: 1em 0;">
-        <h1 style="font-size:xx-large;color: burlywood;">UPCOMING EVENTS</h1> 
+        <h1 style="font-size:xx-large;color: burlywood;">UPCOMING EVENTS</h1>
         <div class="event_cards">
             <% event_data.forEach(event=> { %>
                 <div class="event-card">
@@ -43,32 +105,93 @@
                         <p><strong>Date:</strong>
                             <%= formatDate(event.event_date) %>
                         </p>
-                      
+
                     </div>
                 </div>
-            <% }); %>
+                <% }); %>
         </div>
     </div>
-    
+
+
+
+    <h1 style="color: white;margin: 3em 0 .5em 0;">Student Participated Events</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Participated In</th>
+                <th>Event Prize</th>
+                <th>Event Place</th>
+                <th>Event Date</th>
+                <th>Students</th>
+                <!-- <th>Event Images</th> -->
+                <!-- <th>Delete</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <% events.forEach(event=> { %>
+                <tr>
+                    <td>
+                        <%= event.eventName %>
+                    </td>
+                    <td>
+                        <%= event.participatedIn %>
+                    </td>
+                    <td>
+                        <%= event.eventPrize %>
+                    </td>
+                    <td>
+                        <%= event.eventPlace %>
+                    </td>
+                    <td>
+                        <%= event.eventDate.toDateString() %>
+                    </td>
+                    <td>
+                        <ul>
+                            <% event.students.forEach(student=> { %>
+                                <li>
+                                    <%= student.name %> (<%= student.regNo %>, <%= student.studentClass %>)
+                                </li>
+                                <% }) %>
+                        </ul>
+                    </td>
+                    <!-- <td>
+                        <ul>
+                            <% event.eventImages.forEach(image=> { %>
+                                <li><img src="<%= image %>" alt="Event Image"></li>
+                                <% }) %>
+                        </ul>
+                    </td> -->
+                    <!-- <td>
+                        <form action="/delete-upevent/<%= event._id %>" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td> -->
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
 
 
 
 
-        <script>
-            function formatDate(dateString) {
-                const date = new Date(dateString);
-                const options = { weekday: 'short', month: 'short', day: 'numeric' };
-                return date.toLocaleDateString('en-US', options);
-            }
-        </script>
+
+
+    <script>
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { weekday: 'short', month: 'short', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+    </script>
 
 
 
 
 
 
-        <!--  <!-- Footer -->
-        <!--  <footer>
+    <!--  <!-- Footer -->
+    <!--  <footer>
     <div class="footer-info">
         <div class="left">
             <p>About us:<br>
