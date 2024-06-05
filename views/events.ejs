@@ -177,6 +177,67 @@
 
 
 
+    <div class="container">
+        <h1>Event Bill List</h1>
+        <table id="bill-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Event Date</th>
+                    <th>Bill Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table content will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const billTable = document.getElementById("bill-table");
+            const storedData = JSON.parse(localStorage.getItem("bills")) || [];
+    
+            // Function to render the table
+            function renderTable() {
+                // Clear existing table content
+                billTable.querySelector("tbody").innerHTML = "";
+    
+                // Populate table with stored data
+                storedData.forEach((bill, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${bill.eventName}</td>
+                        <td>${bill.eventDate}</td>
+                        <td>${bill.billAmount}</td>
+                        <td><button onclick="deleteBill(${index})">Delete</button></td>
+                    `;
+                    billTable.querySelector("tbody").appendChild(row);
+                });
+            }
+    
+            // Function to delete a bill
+            window.deleteBill = (index) => {
+                storedData.splice(index, 1);
+                localStorage.setItem("bills", JSON.stringify(storedData));
+                renderTable();
+            };
+    
+            // Render the initial table
+            renderTable();
+        });
+    </script>
+    
+
+
+
+
+
+    
+
+
+
     <script>
         function formatDate(dateString) {
             const date = new Date(dateString);

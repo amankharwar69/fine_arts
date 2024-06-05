@@ -184,25 +184,61 @@
 
 
 
-    <div class="bills">
-        <h2>Upload Bill</h2>
-        <form action="/billupload" method="post" enctype="multipart/form-data">
+    <div class="container">
+        <h1>Event Bill Uploading Form</h1>
+        <form id="bill-form">
             <div class="form-group">
                 <label for="event-name">Event Name:</label>
                 <input type="text" id="event-name" name="eventName" required>
             </div>
             <div class="form-group">
-                <label for="event-date">Date:</label>
+                <label for="event-date">Event Date:</label>
                 <input type="date" id="event-date" name="eventDate" required>
             </div>
             <div class="form-group">
-                <label for="bill-image">Bill Image:</label>
-                <input type="file" id="bill-image" name="billImage" accept="image/*" >
+                <label for="bill-amount">Bill Amount:</label>
+                <input type="number" id="bill-amount" name="billAmount" required>
             </div>
-         <button type="submit">upload</button>
+            <button type="submit">Upload</button>
         </form>
-
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("bill-form");
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                // Get form data
+                const formData = new FormData(form);
+                const eventName = formData.get("eventName");
+                const eventDate = formData.get("eventDate");
+                const billAmount = formData.get("billAmount");
+
+                // Check for empty data
+                if (!eventName || !eventDate || !billAmount) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+
+                // Get existing data from local storage
+                let storedData = JSON.parse(localStorage.getItem("bills")) || [];
+
+                // Append new data
+                storedData.push({ eventName, eventDate, billAmount });
+
+                // Store updated data back to local storage
+                localStorage.setItem("bills", JSON.stringify(storedData));
+
+                // Clear the form
+                form.reset();
+
+                // Show alert
+                alert("Bill uploaded successfully!");
+            });
+        });
+    </script>
 
     <script>
         document.getElementById('addStudent').addEventListener('click', function () {
@@ -220,6 +256,12 @@
             </select>`;
             document.getElementById('students').appendChild(newStudent);
         });
+
+
+
+
+
+
     </script>
 
 
