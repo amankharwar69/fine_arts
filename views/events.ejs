@@ -113,79 +113,89 @@
     </div>
 
 
+    <input id="search"
+    style="font-size: 16px; border: none; padding: 10px; border-radius: 8px;  margin: auto; width:fit-content;outline: none;"
+    type="text" placeholder="enter register number"
+    oninput="filterTable(this.value)">
 
-    <h1 style="color: white;margin: 3em 0 .5em 0;">Student Participated Events</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Event Name</th>
-                <th>Participated In</th>
-                <th>Event Prize</th>
-                <th>Event Place</th>
-                <th>Event Date</th>
-                <th>Students</th>
-                <!-- <th>Event Images</th> -->
-                <!-- <th>Delete</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            <% events.forEach(event=> { %>
-                <tr>
-                    <td>
-                        <%= event.eventName %>
-                    </td>
-                    <td>
-                        <%= event.participatedIn %>
-                    </td>
-                    <td>
-                        <%= event.eventPrize %>
-                    </td>
-                    <td>
-                        <%= event.eventPlace %>
-                    </td>
-                    <td>
-                        <%= event.eventDate.toDateString() %>
-                    </td>
-                    <td>
-                        <ul>
-                            <% event.students.forEach(student=> { %>
-                                <li>
-                                    <%= student.name %> (<%= student.regNo %>, <%= student.studentClass %>)
-                                </li>
-                                <% }) %>
-                        </ul>
-                    </td>
-                    <!-- <td>
-                        <ul>
-                            <% event.eventImages.forEach(image=> { %>
-                                <li><img src="<%= image %>" alt="Event Image"></li>
-                                <% }) %>
-                        </ul>
-                    </td> -->
-                    <!-- <td>
-                        <form action="/delete-upevent/<%= event._id %>" method="post">
-                            <button type="submit">Delete</button>
-                        </form>
-                    </td> -->
-                </tr>
-                <% }) %>
-        </tbody>
-    </table>
-
-
+<h1 style="color: white;margin: 3em 0 .5em 0;">Student Participated Events</h1>
+<table id="events-table">
+<thead>
+    <tr>
+        <th>Event Name</th>
+        <th>Participated In</th>
+        <th>Event Prize</th>
+        <th>Event Place</th>
+        <th>Event Date</th>
+        <th>Students</th>
+        <!-- <th>Event Images</th> -->
+        <!-- <th>Delete</th> -->
+    </tr>
+</thead>
+<tbody>
+    <% events.forEach(event=> { %>
+        <tr>
+            <td>
+                <%= event.eventName %>
+            </td>
+            <td>
+                <%= event.participatedIn %>
+            </td>
+            <td>
+                <%= event.eventPrize %>
+            </td>
+            <td>
+                <%= event.eventPlace %>
+            </td>
+            <td>
+                <%= event.eventDate.toDateString() %>
+            </td>
+            <td>
+                <ul>
+                    <% event.students.forEach(student=> { %>
+                        <li data-regno="<%= student.regNo %>">
+                            <%= student.name %> (<%= student.regNo %>, <%= student.studentClass %>)
+                        </li>
+                        <% }) %>
+                </ul>
+            </td>
+        </tr>
+        <% }) %>
+</tbody>
+</table>
+****
+    <script>
+        function filterTable(searchValue) {
+            const tableRows = document.getElementById("events-table").getElementsByTagName("tr");
+            for (let i = 0; i < tableRows.length; i++) {
+                const row = tableRows[i];
+                const regNos = row.getElementsByTagName("li");
+                let showRow = false;
+                for (let j = 0; j < regNos.length; j++) {
+                    const regNo = regNos[j].getAttribute("data-regno");
+                    if (regNo.includes(searchValue)) {
+                        showRow = true;
+                        break;
+                    }
+                }
+                row.style.display = showRow ? "" : "none";
+            }
+        }
+    </script>
 
 
 
 
     <div class="container">
-        <h1>Event Bill List</h1>
+
+        <h1 style="color: white;"> Event Bill List</h1>
         <table id="bill-table">
             <thead>
                 <tr>
                     <th>Event Name</th>
                     <th>Event Date</th>
                     <th>Bill Amount</th>
-                    <th>Action</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -193,17 +203,17 @@
             </tbody>
         </table>
     </div>
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const billTable = document.getElementById("bill-table");
             const storedData = JSON.parse(localStorage.getItem("bills")) || [];
-    
+
             // Function to render the table
             function renderTable() {
                 // Clear existing table content
                 billTable.querySelector("tbody").innerHTML = "";
-    
+
                 // Populate table with stored data
                 storedData.forEach((bill, index) => {
                     const row = document.createElement("tr");
@@ -211,30 +221,29 @@
                         <td>${bill.eventName}</td>
                         <td>${bill.eventDate}</td>
                         <td>${bill.billAmount}</td>
-                        <td><button onclick="deleteBill(${index})">Delete</button></td>
                     `;
                     billTable.querySelector("tbody").appendChild(row);
                 });
             }
-    
+
             // Function to delete a bill
             window.deleteBill = (index) => {
                 storedData.splice(index, 1);
                 localStorage.setItem("bills", JSON.stringify(storedData));
                 renderTable();
             };
-    
+
             // Render the initial table
             renderTable();
         });
     </script>
-    
 
 
 
 
 
-    
+
+
 
 
 
@@ -244,33 +253,12 @@
             const options = { weekday: 'short', month: 'short', day: 'numeric' };
             return date.toLocaleDateString('en-US', options);
         }
+
+
+
+
     </script>
 
-
-
-
-
-
-    <!--  <!-- Footer -->
-    <!--  <footer>
-    <div class="footer-info">
-        <div class="left">
-            <p>About us:<br>
-                Govinda Dasa College, Surathkal<br>
-                Managed By : Hindu Vidyadayinee Sangha<br>
-                Surathkal - 575014, D.K</p>
-        </div>
-        <div class="right">
-            <p>Contact Us: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
-            <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
-            <p>Location: <a href="https://www.google.com/maps/place/Govinda+Dasa+Degree+College/@12.9848875,74.7974572,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba351cc794e013b:0x820bb3742f5c307e!8m2!3d12.9848875!4d74.8023281!16s%2Fm%2F0czf8vd?entry=ttu">View on Map</a></p>
-            <p><a
-                    href="https://r.search.yahoo.com/_ylt=AwrKExQCLiRm3AsyIAq7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1713675906/RO=10/RU=https%3a%2f%2fgovindadasacollege.edu.in%2f/RK=2/RS=UCGYBTZ32avfjE1uyCmbBVergvQ-">College
-                    Website</a></p>
-        </div>
-        <p>&copy; 2024 FINE ARTS MANAGEMENT. All rights reserved.</p>
-    </div>
-</footer> -->
 
 
 
