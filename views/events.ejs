@@ -163,10 +163,10 @@
         <% }) %>
 </tbody>
 </table>
-****
+
     <script>
         function filterTable(searchValue) {
-            const tableRows = document.getElementById("events-table").getElementsByTagName("tr");
+            const tableRows = document.getElementById("events-table").querySelectorAll("tbody tr");
             for (let i = 0; i < tableRows.length; i++) {
                 const row = tableRows[i];
                 const regNos = row.getElementsByTagName("li");
