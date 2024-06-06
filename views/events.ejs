@@ -114,55 +114,54 @@
 
 
     <input id="search"
-    style="font-size: 16px; border: none; padding: 10px; border-radius: 8px;  margin: auto; width:fit-content;outline: none;"
-    type="text" placeholder="enter register number"
-    oninput="filterTable(this.value)">
+        style="font-size: 16px; border: none; padding: 10px; border-radius: 8px;  margin: auto; width:fit-content;outline: none;"
+        type="text" placeholder="enter register number" oninput="filterTable(this.value)">
 
-<h1 style="color: white;margin: 3em 0 .5em 0;">Student Participated Events</h1>
-<table id="events-table">
-<thead>
-    <tr>
-        <th>Event Name</th>
-        <th>Participated In</th>
-        <th>Event Prize</th>
-        <th>Event Place</th>
-        <th>Event Date</th>
-        <th>Students</th>
-        <!-- <th>Event Images</th> -->
-        <!-- <th>Delete</th> -->
-    </tr>
-</thead>
-<tbody>
-    <% events.forEach(event=> { %>
-        <tr>
-            <td>
-                <%= event.eventName %>
-            </td>
-            <td>
-                <%= event.participatedIn %>
-            </td>
-            <td>
-                <%= event.eventPrize %>
-            </td>
-            <td>
-                <%= event.eventPlace %>
-            </td>
-            <td>
-                <%= event.eventDate.toDateString() %>
-            </td>
-            <td>
-                <ul>
-                    <% event.students.forEach(student=> { %>
-                        <li data-regno="<%= student.regNo %>">
-                            <%= student.name %> (<%= student.regNo %>, <%= student.studentClass %>)
-                        </li>
-                        <% }) %>
-                </ul>
-            </td>
-        </tr>
-        <% }) %>
-</tbody>
-</table>
+    <h1 style="color: white;margin: 3em 0 .5em 0;">Student Participated Events</h1>
+    <table id="events-table">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Participated In</th>
+                <th>Event Prize</th>
+                <th>Event Place</th>
+                <th>Event Date</th>
+                <th>Students</th>
+                <!-- <th>Event Images</th> -->
+                <!-- <th>Delete</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <% events.forEach(event=> { %>
+                <tr>
+                    <td>
+                        <%= event.eventName %>
+                    </td>
+                    <td>
+                        <%= event.participatedIn %>
+                    </td>
+                    <td>
+                        <%= event.eventPrize %>
+                    </td>
+                    <td>
+                        <%= event.eventPlace %>
+                    </td>
+                    <td>
+                        <%= event.eventDate.toDateString() %>
+                    </td>
+                    <td>
+                        <ul>
+                            <% event.students.forEach(student=> { %>
+                                <li data-regno="<%= student.regNo %>">
+                                    <%= student.name %> (<%= student.regNo %>, <%= student.studentClass %>)
+                                </li>
+                                <% }) %>
+                        </ul>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
 
     <script>
         function filterTable(searchValue) {
@@ -186,56 +185,6 @@
 
 
 
-    <div class="container">
-
-        <h1 style="color: white;"> Event Bill List</h1>
-        <table id="bill-table">
-            <thead>
-                <tr>
-                    <th>Event Name</th>
-                    <th>Event Date</th>
-                    <th>Bill Amount</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Table content will be inserted here -->
-            </tbody>
-        </table>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const billTable = document.getElementById("bill-table");
-            const storedData = JSON.parse(localStorage.getItem("bills")) || [];
-
-            // Function to render the table
-            function renderTable() {
-                // Clear existing table content
-                billTable.querySelector("tbody").innerHTML = "";
-
-                // Populate table with stored data
-                storedData.forEach((bill, index) => {
-                    const row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td>${bill.eventName}</td>
-                        <td>${bill.eventDate}</td>
-                        <td>${bill.billAmount}</td>
-                    `;
-                    billTable.querySelector("tbody").appendChild(row);
-                });
-            }
-
-            // Function to delete a bill
-            window.deleteBill = (index) => {
-                storedData.splice(index, 1);
-                localStorage.setItem("bills", JSON.stringify(storedData));
-                renderTable();
-            };
-
-            // Render the initial table
-            renderTable();
-        });
     </script>
 
 

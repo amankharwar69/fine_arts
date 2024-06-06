@@ -121,11 +121,13 @@
         </tbody>
     </table>
 
-
-
-
+    
     <h1>Student Participated Events</h1>
-    <table>
+    
+        <input id="search"
+            style="font-size: 16px; border: 1px solid grey; padding: 10px; border-radius: 8px;  margin: auto; width:fit-content;outline: none;"
+            type="text" placeholder="enter register number" oninput="filterTable(this.value)">
+    <table id="events-table">
         <thead>
             <tr>
                 <th>Event Name</th>
@@ -159,7 +161,7 @@
                     <td>
                         <ul>
                             <% event.students.forEach(student=> { %>
-                                <li>
+                                <li data-regno="<%= student.regNo %>">
                                     <%= student.name %> (<%= student.regNo %>, <%= student.studentClass %>)
                                 </li>
                                 <% }) %>
@@ -182,6 +184,24 @@
         </tbody>
     </table>
 
+    <script>
+        function filterTable(searchValue) {
+            const tableRows = document.getElementById("events-table").querySelectorAll("tbody tr");
+            for (let i = 0; i < tableRows.length; i++) {
+                const row = tableRows[i];
+                const regNos = row.getElementsByTagName("li");
+                let showRow = false;
+                for (let j = 0; j < regNos.length; j++) {
+                    const regNo = regNos[j].getAttribute("data-regno");
+                    if (regNo.includes(searchValue)) {
+                        showRow = true;
+                        break;
+                    }
+                }
+                row.style.display = showRow ? "" : "none";
+            }
+        }
+    </script>
 
 
 
