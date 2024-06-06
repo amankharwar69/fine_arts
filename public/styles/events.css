@@ -80,12 +80,13 @@ nav{
 .event-card {
     display: flex;
     flex-direction: column;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 2px solid #343030;
+    border-radius: 8px;
     overflow: hidden;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(135, 15, 15, 0.1);
     width: fit-content;
+    background-color: #222121;
 }
 
 .event-card img {
@@ -95,7 +96,7 @@ nav{
 }
 
 .event-details {
-    padding: 20px;
+    padding: 8px;
 }
 
 .event-details h2 {
@@ -141,11 +142,13 @@ nav{
 
 
 /* Footer styles */
-/* footer {
+ /* footer {
     background-color: #171515;
     padding: 20px;
     text-align: center;
-    margin-top: -19px;
+    margin-top: 8em;
+    position: relative;
+    z-index: 999;
 }
 
 .footer-info {
@@ -166,6 +169,4 @@ nav{
     text-align: right;
     margin-top: -4.5em;
 
-}
-
-/* footer end */ 
+}  */

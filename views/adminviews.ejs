@@ -10,14 +10,16 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        background-color: rgb(71, 67, 67);
         margin: 0;
         padding: 20px;
     }
 
+
     h1 {
         text-align: center;
-        color: #333;
+        color: #fff9f9;
+        font-size: 3em;
     }
 
     table {
@@ -28,22 +30,29 @@
 
     th,
     td {
-        border: 1px solid #ddd;
+        border: 5px solid #474747;
         padding: 8px;
         text-align: left;
     }
 
     th {
-        background-color: #4CAF50;
-        color: white;
+        background-color: #000000;
+        color: rgb(255, 255, 255);
     }
 
     tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: #d7d0d0;
+        color: rgb(0, 0, 0);
+        font-size:1.4em;
+    }
+    tr:nth-child(odd) {
+        background-color:  #d7d0d0;
+        color: rgb(0, 0, 0);
+        font-size:1.4em;
     }
 
     tr:hover {
-        background-color: #ddd;
+        background-color: #978e8e;
     }
 
     ul {
@@ -61,7 +70,7 @@
         background-color: #f44336;
         color: white;
         border: none;
-        padding: 8px 16px;
+        padding: 10px 16px;
         cursor: pointer;
     }
 
@@ -76,6 +85,7 @@
 
 
 <body>
+    
 
     <h1>Upcoming Events</h1>
     <table>
@@ -91,6 +101,8 @@
             </tr>
         </thead>
         <tbody>
+            
+
             <% upevents.forEach(event=> { %>
                 <tr>
                     <td><a href="<%= event.event_brochure %>" target="_blank">

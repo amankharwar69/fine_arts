@@ -10,7 +10,7 @@
 <style>
     h1 {
         text-align: center;
-        color: #333;
+        color: #ffffff;
     }
 
     table {
@@ -22,15 +22,16 @@
 
     th,
     td {
-        border: 1px solid #ddd;
+        border: 4px solid #464343;
+        border-radius: 10px;
         padding: 8px;
         text-align: left;
         color: rgb(0, 0, 0);
-        background-color: white;
+        background-color: #afa7a7;
     }
 
     th {
-        background-color: #4CAF50;
+        background-color: #424642;
         color: white;
     }
 
@@ -68,6 +69,7 @@
     form {
         display: inline-block;
     }
+
 </style>
 
 <body>
@@ -90,8 +92,8 @@
         </nav>
     </div>
 
-    <div class="events" style="color: white;text-align: center; padding: 1em 0;">
-        <h1 style="font-size:xx-large;color: burlywood;">UPCOMING EVENTS</h1>
+    <div class="events" style="color: rgb(199, 194, 194);text-align: center; padding: 1em 0;">
+        <h1 style="font-size:4em;color: rgb(239, 238, 238);font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;text-decoration: underline">UPCOMING EVENTS</h1>
         <div class="event_cards">
             <% event_data.forEach(event=> { %>
                 <div class="event-card">
@@ -113,11 +115,14 @@
     </div>
 
 
-    <input id="search"
-        style="font-size: 16px; border: none; padding: 10px; border-radius: 8px;  margin: auto; width:fit-content;outline: none;"
-        type="text" placeholder="enter register number" oninput="filterTable(this.value)">
+    
 
-    <h1 style="color: white;margin: 3em 0 .5em 0;">Student Participated Events</h1>
+    <h1 style="font-size:4em;color: rgb(239, 235, 235);font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;margin-top: 30px;text-decoration: underline;margin-bottom: 10PX;">STUDENT PARTICIPATED EVENTS</h1>
+
+    <input id="search"
+    style="font-size: 15px; border: none; padding: 6px; border-radius: 20px;  margin-left: 86em; width:fit-content;outline: none;margin-bottom: 10px;background: #dbd9d9;width: 17%;"
+    type="text" placeholder="Enter Regno to find" oninput="filterTable(this.value)">
+
     <table id="events-table">
         <thead>
             <tr>
@@ -190,12 +195,6 @@
 
 
 
-
-
-
-
-
-
     <script>
         function formatDate(dateString) {
             const date = new Date(dateString);
@@ -210,6 +209,27 @@
 
 
 
+
+
+    <!-- Footer -->
+<!--     <footer>
+        <div class="footer-info">
+            <div class="left">
+            <p>About us:<br>
+                Govinda Dasa College, Surathkal<br>
+                Managed By : Hindu Vidyadayinee Sangha<br> 
+                Surathkal - 575014, D.K</p>
+            </div>
+            <div class="right">
+            <p>Contact Us: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+            <p>Location: <a href="https://www.google.com/maps/place/Govinda+Dasa+Degree+College/@12.9848875,74.7974572,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba351cc794e013b:0x820bb3742f5c307e!8m2!3d12.9848875!4d74.8023281!16s%2Fm%2F0czf8vd?entry=ttu">View on Map</a></p>
+            <p><a href="https://r.search.yahoo.com/_ylt=AwrKExQCLiRm3AsyIAq7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1713675906/RO=10/RU=https%3a%2f%2fgovindadasacollege.edu.in%2f/RK=2/RS=UCGYBTZ32avfjE1uyCmbBVergvQ-">College Website</a></p>
+        </div>
+            <p>&copy; 2024 FINE ARTS MANAGEMENT. All rights reserved.</p>
+        </div>
+    </footer>
+     -->
 
 
 

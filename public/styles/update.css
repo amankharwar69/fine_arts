@@ -132,7 +132,7 @@ nav{
 /* --------------------------------------------------------------------------------------- */
 
 .container {
-    background-color: #fff;
+    background-color: #c2baba;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -164,8 +164,9 @@ input[type="file"] {
     width: calc(100% - 22px);
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 6px;
     margin-bottom: 10px;
+    background-color: #f0ecec;
 }
 
 .student input[type="text"] {
